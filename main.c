@@ -20,12 +20,13 @@ int main(void) {
         printf("Nothing to do (n = 0).\n");
         return 0;
     }
+    
 
     if (type == 'i' || type == 'I') {
         int *arr = malloc(sizeof(int) *n);
         if (arr == NULL){
-        fprintf(stderr, "Out of memory\n");
-        return 1;
+            fprintf(stderr, "Out of memory\n");
+            return 1;
         }
 
     for (size_t i = 0; i < n; i++) {
@@ -35,16 +36,36 @@ int main(void) {
             if(arr[i] <= 0){
                printf("Only values > 0!\n");
             }   
-        }while (arr[i] <= 0);
+        }while (arr[i] <= 0);  
+    }
 
-    }for(size_t i = 0; i < n; i++){
+    for (size_t i = 0; i < n; i++){
         printf("%d ", arr[i]);
     }
     printf("\n");
     free(arr);
     
-    } else {
-        // samma med float, %f och %.2f
+    } else if (type == 'f' || type == 'F') {
+        float *arr = malloc(sizeof(float) *n);
+        if (arr  == NULL){
+            fprintf(stderr, "Out of memory\n");
+            return 1;
+        }
+    for (size_t i = 0; i <  n; i++){
+        do{
+            printf("Value %zu:  ", i + 1);
+            scanf("%f", &arr[i]);
+            if(arr[i] <= 0){
+                printf("Only values > 0!\n");
+            }
+        }while (arr[i] <= 0);
+    }
+
+    for (size_t i = 0; i < n; i++){
+        printf("%.2f ", arr[i]);
+    } 
+    printf("\n");
+    free(arr);
     }
     
     return 0;
