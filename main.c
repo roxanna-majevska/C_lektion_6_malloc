@@ -21,12 +21,31 @@ int main(void) {
         return 0;
     }
 
-    /*
-    TODO
-    Implement so that the user can enter the amount of specified values of specified type!
-    Only positve values are allowed! --> valuse > 0
-    Print out the array of values after the user is done on the same row!
-    */
+    if (type == 'i' || type == 'I') {
+        int *arr = malloc(sizeof(int) *n);
+        if (arr == NULL){
+        fprintf(stderr, "Out of memory\n");
+        return 1;
+        }
 
+    for (size_t i = 0; i < n; i++) {
+        do{
+            printf("Value %zu: ", i + 1);
+            scanf("%d", &arr[i]);
+            if(arr[i] <= 0){
+               printf("Only values > 0!\n");
+            }   
+        }while (arr[i] <= 0);
+
+    }for(size_t i = 0; i < n; i++){
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+    free(arr);
+    
+    } else {
+        // samma med float, %f och %.2f
+    }
+    
     return 0;
 }
